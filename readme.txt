@@ -12,7 +12,7 @@ Advanced Footnotes lets you add footnotes on articles via shortcodes. Advanced F
 
 With its internal functions, you can also implement Advanced Footnotes on your own theme in any form you like.
 
-##Main Features:##
+#Main Features:#
 * Implemented WYSIWYG editor button.
 * Footnotes  can be implemented with shortcode or function.
 * Animated scroll effect (can be disabled)
