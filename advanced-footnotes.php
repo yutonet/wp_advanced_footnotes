@@ -2,7 +2,7 @@
 	/*
 		Plugin Name: Advanced Footnotes
 		Description: Simple yet powerful footnotes integration on your WordPress site or theme itself.
-		Version: 0.111
+		Version: 0.112
 		Author: Yunus Tabakoğlu
 		Author URI: http://yunustabakoglu.com/
 		Text Domain: advanced_footnotes
