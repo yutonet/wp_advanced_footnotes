@@ -2,7 +2,7 @@
 	/*
 		Plugin Name: Advanced Footnotes
 		Description: Simple yet powerful footnotes integration on your WordPress site or theme itself.
-		Version: 0.1
+		Version: 0.11
 		Author: Yunus Tabakoğlu
 		Author URI: http://yunustabakoglu.com/
 		Text Domain: advanced_footnotes
@@ -69,11 +69,13 @@
 		}
 		
 		static function print_refs($print = true, $title = false){
+			$html = '<div class="afn-footnotes">';
+
 			if($title !== false){
 				$html .= '<h3 class="afn-footnotes-title">'.$title.'</h3>';
 			}
 			
-			$html = '<ul class="afn-footnotes-list">';
+			$html .= '<ul class="afn-footnotes-list">';
 
 			foreach(self::$footnotes_numberless as $nth => $footnote){
 				$html .= '<li class="footnote-item afn-textarea">';
@@ -87,6 +89,7 @@
 			}
 
 			$html .= '</ul>';
+			$html .= '</div>';
 
 			if($print){
 				echo $html;

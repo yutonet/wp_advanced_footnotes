@@ -16,12 +16,12 @@
 				var selected_text = ed.selection.getContent();
 				if(selected_text == false || selected_text == ""){
 					ed.windowManager.open({
-						title: 'Dipnot Ekle',
+						title: 'Insert Footnote',
 						body: [
 							{
 								type: 'textbox',
 								name: 'content',
-								label: 'Dipnot',
+								label: 'Footnote',
 								value: "",
 								multiline: true,
 								minWidth: 300,
