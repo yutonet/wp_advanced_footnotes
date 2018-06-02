@@ -102,6 +102,25 @@
 				'std'       => '',
 				'label_for' => 'var_reftitle',
 				'class'     => '',
+				'default'	=> __('References'),
+			)
+		);
+
+		add_settings_field(
+			'var_footnotesymbol',
+			__('Footnote Symbol'),
+			'advanced_footnotes_settings_showfield',
+			'advanced_footnotes',
+			'afn_strings',
+			array(
+				'type'      => 'text',
+				'id'        => 'var_footnotesymbol',
+				'name'      => 'var_footnotesymbol',
+				'desc'      => __('Symbol used for non-numeric footnotes.'),
+				'std'       => '',
+				'label_for' => 'var_footnotesymbol',
+				'class'     => '',
+				'default'	=> '*',
 			)
 		);
 
@@ -137,6 +156,7 @@
 				'std'       => '',
 				'label_for' => 'var_scrollgap',
 				'class'     => '',
+				'default'	=> 0,
 			)
 		);
 
@@ -154,6 +174,7 @@
 				'std'       => '',
 				'label_for' => 'var_scrollspeed',
 				'class'     => '',
+				'default'	=> 350,
 			)
 		);
 	}
@@ -164,6 +185,22 @@
 		$option_name = 'afn_opts';
 	
 		$options = get_option( $option_name );
+
+		$option_value = $options[$id];
+
+		if(
+			($type != 'check') &&
+			(
+				!$default ||
+				$default === 0
+			) &&
+			(
+				$options[$id] === "" ||
+				$options[$id] === null
+			)
+		){
+			$option_value = $default;
+		}
 	
 		switch ( $type ) {  
 			case 'text': 
@@ -172,7 +209,7 @@
 				  $options[$id] = stripslashes($options[$id]);  
 				  $options[$id] = esc_attr( $options[$id]); 
 				}else{ $options[$id] = ""; }
-				  echo "<input class='regular-text $class' type='text' id='$id' name='" . $option_name . "[$id]' value='$options[$id]' />";  
+				  echo "<input class='regular-text $class' type='text' id='$id' name='" . $option_name . "[$id]' value='$option_value' />";  
 				  echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";  
 			break;
 			case 'textarea': 
@@ -181,7 +218,7 @@
 				  $options[$id] = stripslashes($options[$id]);  
 				  $options[$id] = esc_attr( $options[$id]); 
 				}else{ $options[$id] = ""; }
-				  echo "<textarea class='regular-text $class' cols='44' rows='5' id='$id' name='" . $option_name . "[$id]'>$options[$id]</textarea>";  
+				  echo "<textarea class='regular-text $class' cols='44' rows='5' id='$id' name='" . $option_name . "[$id]'>$option_value</textarea>";  
 				  echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";  
 			break;    
 			case 'number':  
@@ -190,7 +227,7 @@
 				  $options[$id] = stripslashes($options[$id]);  
 				  $options[$id] = esc_attr( $options[$id]);  
 				}else{ $options[$id] = "0"; }
-				echo "<input class='regular-text $class' type='number' id='$id' name='" . $option_name . "[$id]' value='$options[$id]' />";  
+				echo "<input class='regular-text $class' type='number' id='$id' name='" . $option_name . "[$id]' value='$option_value' />";  
 				echo ($desc != '') ? "<br /><span class='description'>$desc</span>" : "";  
 			break; 
 			case 'check':  

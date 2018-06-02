@@ -25,17 +25,25 @@
 								value: "",
 								multiline: true,
 								minWidth: 300,
-                minHeight: 100,
+                				minHeight: 100,
+							},
+							{type: 'listbox',   
+								name: 'type',
+								label: 'Footnote Type',
+								'values': [
+									{text: 'Numeric', value: 'numeric'},
+									{text: 'Non-numeric', value: 'non-numeric'},
+								],
 							},
 						],
 						onsubmit: function( e ) {
-							var return_text = "[footnote]"+e.data.content+"[/footnote]";
+							var return_text = "[footnote type=\""+e.data.type+"\"]"+e.data.content+"[/footnote]";
 							ed.execCommand("mceInsertContent", false, return_text);
 						}
 					});
 				}
 				else{
-					var return_text = "[footnote]" + selected_text + "[/footnote]";
+					var return_text = "[footnote type=\"numeric\"]" + selected_text + "[/footnote]";
 					ed.execCommand("mceInsertContent", false, return_text);
 				}
 			});

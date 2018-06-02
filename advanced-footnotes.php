@@ -2,7 +2,7 @@
 	/*
 		Plugin Name: Advanced Footnotes
 		Description: Simple yet powerful footnotes integration on your WordPress site or theme itself.
-		Version: 0.114
+		Version: 1.0.2
 		Author: Yunus Tabakoğlu
 		Author URI: http://yunustabakoglu.com/
 		Text Domain: advanced_footnotes
@@ -31,7 +31,7 @@
 		}
 
 		static function add_ref($atts, $content) {
-			
+				$opts = get_option('afn_opts');
 				$a = shortcode_atts( array(
 						'type' => 'numeric',
 				), $atts );
@@ -45,7 +45,7 @@
 					case "numberless": case "non-numeric": default:
 						self::$footnote_numberless_nth ++;
 						self::$footnotes_numberless[] = $content;
-						return '<a class="afn-footnotes-ref hook non-numeric" id="article-footnote-numberless-hook-'.self::$footnote_numberless_nth.'" name="article-footnote-numberless-hook-'.self::$footnote_numberless_nth.'" href="#article-footnote-numberless-'.self::$footnote_numberless_nth.'">*</a>';
+						return '<a class="afn-footnotes-ref hook non-numeric" id="article-footnote-numberless-hook-'.self::$footnote_numberless_nth.'" name="article-footnote-numberless-hook-'.self::$footnote_numberless_nth.'" href="#article-footnote-numberless-'.self::$footnote_numberless_nth.'">'.$opts['var_footnotesymbol'].'</a>';
 					break;
 				}
 		}
@@ -69,6 +69,8 @@
 		}
 		
 		static function print_refs($print = true, $title = false){
+			$opts = get_option('afn_opts');
+
 			$html = '<div class="afn-footnotes">';
 
 			if($title !== false){
@@ -79,7 +81,7 @@
 
 			foreach(self::$footnotes_numberless as $nth => $footnote){
 				$html .= '<li class="footnote-item afn-textarea">';
-				$html .= '<a class="afn-footnotes-ref reference non-numeric" id="article-footnote-numberless-'.($nth + 1).'" name="article-footnote-numberless-'.($nth + 1).'" href="#article-footnote-numberless-hook-'.($nth + 1).'">*</a> '.$footnote;
+				$html .= '<a class="afn-footnotes-ref reference non-numeric" id="article-footnote-numberless-'.($nth + 1).'" name="article-footnote-numberless-'.($nth + 1).'" href="#article-footnote-numberless-hook-'.($nth + 1).'">'.$opts['var_footnotesymbol'].'</a> '.$footnote;
 				$html .= '</li>';
 			}
 			foreach(self::$footnotes as $nth => $footnote){
@@ -204,8 +206,8 @@
 				'include_js'		=> "on",
 				'var_reftitle' 		=> __('References', 'advanced_footnotes'),
 				'var_disablejsopts' => "on",
-				'var_scrollgap'		=> "25",
-				'var_scrollspeed'	=> "0",
+				'var_scrollgap'		=> "0",
+				'var_scrollspeed'	=> "350",
 
 			);
 			add_option('afn_opts', $op);
