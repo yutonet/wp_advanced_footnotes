@@ -12,7 +12,7 @@ Advanced Footnotes lets you add footnotes on articles via shortcodes. Advanced F
 
 With its internal functions, you can also implement Advanced Footnotes on your own theme in any form you like.
 
-= Main Features: =
+# Main Features:
 * Easy &amp; flexible implementation.
 * Implemented WYSIWYG editor button.
 * Footnotes  can be implemented with shortcode or function.
@@ -21,48 +21,48 @@ With its internal functions, you can also implement Advanced Footnotes on your o
 * Custom CSS styling
 * Dynamically changeable interface options (JS can be fully disabled)
 
-= Usage =
+# Usage
 
-**Inserting a Footnote:**
+## Inserting a Footnote:
 In order to insert a footnote, you can either use the "Insert Footnote" button added on your WYSIWYG editor, or use the [footnote]your-footnote-here[/footnote] shortcode.
 
-Shortcode Parameters:
+### Shortcode Parameters:
 *"type":* Determines the type of the reference. **Options:** *numeric* / *non-numeric*.
 
-**Listing Footnotes:**
+## Listing Footnotes:
 You can display the footnotes in two methods:
 
-*Listing by Shortcode:*
+### Listing by Shortcode:
 By simply inserting the *[footnotes]* shortcode in your post content, you can display footnotes wherever you want in your posts.
 
-Shortcode Parameters:
+#### Shortcode Parameters:
 
 *"title":* Determines the title for the footnotes list. Default value can be set through plugin settings.
 
-Shortcode Usage:
+#### Shortcode Usage:
 
-`[footnotes title="My Custom Footnotes Title"]
-// or
-[footnotes title="false"]`
+	[footnotes title="My Custom Footnotes Title"]
+	// or
+	[footnotes title="false"]
 
-*Listing by Theme Inclusion:*
+### Listing by Theme Inclusion:
 
-You can print the footnotes by calling print_refs function from the advanced_footnotes class.
+You can print the footnotes by calling *print_refs* function from the advanced_footnotes class.
 
-Simple Function Usage:
+#### Simple Function Usage:
 
-`call_user_func(array('advanced_footnotes', 'print_refs'));`
+	call_user_func(array('advanced_footnotes', 'print_refs'));
 
-Additional Parameters:
+#### Additional Parameters:
 
 * First parameter: "Print", whether print or return the footnotes content. (Default: "true")
 * Second parameter: "Title", determines the title for the footnotes content. (Default: "false")
 
-Function Usage with Parameters:
+#### Function Usage with Parameters:
 
-`$footnotes = call_user_func_array(array('advanced_footnotes', 'print_refs'), array(false, 'Custom Footnotes Title'));`
+	$footnotes = call_user_func_array(array('advanced_footnotes', 'print_refs'), array(false, 'Custom Footnotes Title'));
 
-= Plugin Options: =
+## Plugin Options:
 
 You can access the plugin options through "Options/Advanced Footnotes".
 
@@ -75,48 +75,50 @@ You can access the plugin options through "Options/Advanced Footnotes".
 * **Footnotes Scroll Gap:** This sets the scroll margin when clicked on a footnote. Set this when you have a fixed header or any other element blocking some part of the window area.
 * **Footnote Scroll Speed:** Sets the animation speed when a footnote is clicked. Set 0 for no animation.
 
-= HTML Structure & Classes =
+## HTML Structure & Classes
 
-** Anchors: **
+### Anchors:
 
-*Numeric Anchor:*
-`<a id="{unique id}" class="afn-footnotes-ref hook numeric" name="{unique id}" href="#{unique id of the reference}">{number - automatically incremented by the order}</a>`
+#### Numeric Anchor:
+	
+	<a id="{unique id}" class="afn-footnotes-ref hook numeric" name="{unique id}" href="#{unique id of the reference}">{number - automatically incremented by the order}</a>
 
-*Non-numeric Anchor:*
-`<a id="{unique id}" class="afn-footnotes-ref hook non-numeric" name="{unique id}" href="#{unique id of the reference}">footnote symbol</a>`
+#### Non-numeric Anchor:
+	
+	<a id="{unique id}" class="afn-footnotes-ref hook non-numeric" name="{unique id}" href="#{unique id of the reference}">footnote symbol</a>
 
-** References: **
+### References:
 
 Non-numbered references are listed before the numbered references on the list.
 
-`<!-- Main Container -->
-<div class="afn-footnotes">
+	<!-- Main Container -->
+	<div class="afn-footnotes">
 
-	<!-- Title -->
-	<h3 class="afn-footnotes-title">{Title}</h3>
+		<!-- Title -->
+		<h3 class="afn-footnotes-title">{Title}</h3>
 
-	<!-- List of references -->
-	<ul class="afn-footnotes-list">
+		<!-- List of references -->
+		<ul class="afn-footnotes-list">
 
-		<!-- Reference item - non-numeric -->
-		<li class="footnote-item afn-textarea">
-			<a id="{unique id}" class="afn-footnotes-ref reference non-numeric" name="{unique id}" href="#{unique id of the anchor}">{footnote symbol}</a>
-		</li>
+			<!-- Reference item - non-numeric -->
+			<li class="footnote-item afn-textarea">
+				<a id="{unique id}" class="afn-footnotes-ref reference non-numeric" name="{unique id}" href="#{unique id of the anchor}">{footnote symbol}</a>
+			</li>
 
-		<!-- Reference item - numeric -->
-		<li class="footnote-item afn-textarea">
-			<a id="{unique id}" class="afn-footnotes-ref reference numeric" name="{unique id}" href="#{unique id of the anchor}">{number - automatically incremented by the order}</a>
-		</li>
+			<!-- Reference item - numeric -->
+			<li class="footnote-item afn-textarea">
+				<a id="{unique id}" class="afn-footnotes-ref reference numeric" name="{unique id}" href="#{unique id of the anchor}">{number - automatically incremented by the order}</a>
+			</li>
 
-	</ul>
+		</ul>
 
-</div>`
+	</div>
 
-= Known Issues =
+# Known Issues
 
 * WYSIWYG Button doesn't work on the plugin [TinyMCE Advanced](https://wordpress.org/plugins/tinymce-advanced/) (and probably on some other -WYSIWYG editor modifying- plugins).
 
-= Contribution =
+# Contribution
 
 <https://github.com/yutonet/wp_advanced_footnotes>
 
@@ -136,6 +138,9 @@ Yes, you can simply use *[footnote]your note here[/footnote]* shortcode for each
 == Changelog ==
 
 = 1.1 =
+
+* **1.1.2**
+	* Fixes on the readme file.
 
 * **1.1.1**
 	* Empty title display bug fixed.
