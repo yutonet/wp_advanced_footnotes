@@ -43,7 +43,7 @@ Shortcode Usage:
 
 `[footnotes title="My Custom Footnotes Title"]
 // or
-[footnotes title="False"]`
+[footnotes title="false"]`
 
 *Listing by Theme Inclusion:*
 
@@ -80,10 +80,10 @@ You can access the plugin options through "Options/Advanced Footnotes".
 ** Anchors: **
 
 *Numeric Anchor:*
-`<a id="[unique id]" class="afn-footnotes-ref hook numeric" name="[unique id]" href="#[unique id of the reference]">[number - automatically incremented by the order]</a>`
+`<a id="{unique id}" class="afn-footnotes-ref hook numeric" name="{unique id}" href="#{unique id of the reference}">{number - automatically incremented by the order}</a>`
 
 *Non-numeric Anchor:*
-`<a id="[unique id]" class="afn-footnotes-ref hook non-numeric" name="[unique id]" href="#[unique id of the reference]">[footnote symbol]</a>`
+`<a id="{unique id}" class="afn-footnotes-ref hook non-numeric" name="{unique id}" href="#{unique id of the reference}">footnote symbol</a>`
 
 ** References: **
 
@@ -93,19 +93,19 @@ Non-numbered references are listed before the numbered references on the list.
 <div class="afn-footnotes">
 
 	<!-- Title -->
-	<h3 class="afn-footnotes-title">[Title]</h3>
+	<h3 class="afn-footnotes-title">{Title}</h3>
 
 	<!-- List of references -->
 	<ul class="afn-footnotes-list">
 
 		<!-- Reference item - non-numeric -->
 		<li class="footnote-item afn-textarea">
-			<a id="[unique id]" class="afn-footnotes-ref reference non-numeric" name="[unique id]" href="#[unique id of the anchor]">[footnote symbol]</a>
+			<a id="{unique id}" class="afn-footnotes-ref reference non-numeric" name="{unique id}" href="#{unique id of the anchor}">{footnote symbol}</a>
 		</li>
 
 		<!-- Reference item - numeric -->
 		<li class="footnote-item afn-textarea">
-			<a id="[unique id]" class="afn-footnotes-ref reference numeric" name="[unique id]" href="#[unique id of the anchor]">[number - automatically incremented by the order]</a>
+			<a id="{unique id}" class="afn-footnotes-ref reference numeric" name="{unique id}" href="#{unique id of the anchor}">{number - automatically incremented by the order}</a>
 		</li>
 
 	</ul>
@@ -116,6 +116,10 @@ Non-numbered references are listed before the numbered references on the list.
 
 * WYSIWYG Button doesn't work on the plugin [TinyMCE Advanced](https://wordpress.org/plugins/tinymce-advanced/) (and probably on some other -WYSIWYG editor modifying- plugins).
 
+= Contribution =
+
+<https://github.com/yutonet/wp_advanced_footnotes>
+
 == Installation ==
 Install and activate Advanced Footnotes like any other plugin.
 
@@ -125,16 +129,17 @@ Install and activate Advanced Footnotes like any other plugin.
 
 Yes you can. You can either get the footnotes as an object array, or simply print it with the Advanced Footnotes\' functions.
 
-= Can I use it without editing my theme files? =
+= Can I use Advanced Footnotes without editing my theme files? =
 
 Yes, you can simply use *[footnote]your note here[/footnote]* shortcode for each footnote you want to place, and [footnotes] shortcode to use put the footnotes wherever you want them to be.
-
-= Contribution =
-<https://github.com/yutonet/wp_advanced_footnotes>
 
 == Changelog ==
 
 = 1.1 =
+
+* **1.1.1**
+	* Empty title display bug fixed.
+	* WYSIWYG dialog enabled on selected text.
 
 * **1.1.0**
 	* Semantic versioning.

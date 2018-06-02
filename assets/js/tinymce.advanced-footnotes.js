@@ -14,7 +14,7 @@
 			//button functionality.
 			ed.addCommand("footnote_command", function() {
 				var selected_text = ed.selection.getContent();
-				if(selected_text == false || selected_text == ""){
+				if(!selected_text){ selected_text = ''; }
 					ed.windowManager.open({
 						title: 'Insert Footnote',
 						body: [
@@ -22,7 +22,7 @@
 								type: 'textbox',
 								name: 'content',
 								label: 'Footnote',
-								value: "",
+								value: selected_text,
 								multiline: true,
 								minWidth: 300,
                 				minHeight: 100,
@@ -41,11 +41,6 @@
 							ed.execCommand("mceInsertContent", false, return_text);
 						}
 					});
-				}
-				else{
-					var return_text = "[footnote type=\"numeric\"]" + selected_text + "[/footnote]";
-					ed.execCommand("mceInsertContent", false, return_text);
-				}
 			});
 
 		},
